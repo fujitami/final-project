@@ -2,7 +2,7 @@
 
 ## アプリケーション概要
 
-*未知の音楽を、直感的に検索できるサービス*
+**未知の音楽を、直感的に検索できるサービス**
 
 各ユーザは、これまで聴いたことのあるアルバムに対し、それについての直感的な印象(例. 暖かい、赤い、悲しい など)のタグをつける。  
 サービスの側で各アルバムごとにつけられたタグを集計し、可視化する。  
@@ -18,6 +18,17 @@
 - 活用案2  
 自分が好む傾向の印象はすでに把握できているため、未知のアーティストのそういった作品を探したい。  
 →タグ検索から、自分の好きな印象のタグが多くつけられた作品を片っ端から試してみる。
+
+## ページ構成
+[Top page](https://i.imgur.com/ehdTEFj.png)
+
+[Artist page](https://i.imgur.com/609U2zU.png)
+
+[Album page](https://i.imgur.com/arGXgw7.png)
+
+[Tag page](https://i.imgur.com/jtl7r9S.png)
+
+[User page](https://i.imgur.com/TT39mHU.png)
 
 ## アプリケーション要件
 
@@ -37,13 +48,16 @@ tagはアプリケーション作成時に定義しておき、各userはその�
 
 ## DB設計
 
+[ER図](https://i.imgur.com/oMWL5vI.png)
+
 ### artistsテーブル
 
 |Column|Type|Options|
 |------|----|-------|
-|artist_name|text|null: false, foreign_key: true, add_index|
+|name|text|null: false, foreign_key: true, add_index|
 
 #### Association
+- has_many :artist_albums
 - has_many :albums, through: artist_albums
 
 ---
@@ -56,8 +70,8 @@ tagはアプリケーション作成時に定義しておき、各userはその�
 |album_id|integer|null: false, foreign_key: true|
 
 #### Association
-- belongs_to :album
-- belongs_to :artist
+- has_many :artists
+- has_many :albums
 
 ---
 
@@ -65,10 +79,12 @@ tagはアプリケーション作成時に定義しておき、各userはその�
 
 |Column|Type|Options|
 |------|----|-------|
-|album_name|text|null: false, foreign_key: true, add_index|
-|album_URI|string|null: false|
+|name|text|null: false, foreign_key: true, add_index|
+|player|string|null: false|
 
 #### Associasion
+- has_many :artist_albums
+- has_many :user_albums
 - has_many :artists, through: artist_albums
 - has_many :users, through: user_albums
 
@@ -82,8 +98,8 @@ tagはアプリケーション作成時に定義しておき、各userはその�
 |user_id|integer|foreign_key: true|
 
 #### Association
-- belongs_to :album
-- belongs_to :user
+- has_many :albums
+- has_many :users
 
 ---
 
@@ -95,8 +111,8 @@ tagはアプリケーション作成時に定義しておき、各userはその�
 |tag_id|integer|foreign_key: true|
 
 #### Association
-- belongs_to :album
-- belongs_to :tag
+- has_many :albums
+- has_many :tags
 
 ---
 
@@ -104,25 +120,12 @@ tagはアプリケーション作成時に定義しておき、各userはその�
 
 |Column|Type|Options|
 |------|----|-------|
-|user_name|text|null: false, unique: true|
-|user_icon|string| |
+|name|text|null: false, unique: true|
+|icon|string| |
 
 #### Association
+- has_many :user_albums
 - has_many :albums, through: user_albums
-- has_many :tags, through: :tag_users
-
----
-
-### tag_usersテーブル
-
-|Column|Type|Options|
-|------|----|-------|
-|tag_id|integer|foreign_key: true|
-|user_id|integer|null: false, foreign_key: true|
-
-#### Association
-- belongs_to :tag
-- belongs_to :user
 
 ---
 
@@ -130,8 +133,8 @@ tagはアプリケーション作成時に定義しておき、各userはその�
 
 |Column|Type|Options|
 |------|----|-------|
-|tag_name|text|null: false, foreign_key: true, unique: true|
+|name|text|null: false, foreign_key: true, unique: true|
 
 #### Association
+- has_many :album_tags
 - has_many :albums, through: album_tags
-- has_many :users, through: tag_users
