@@ -114,7 +114,7 @@
 - has_many :user_albums
 - has_many :taggings
 - has_many :albums, through: user_albums
-- has_many :users, through: taggings
+- has_many :tags, through: taggings
 
 ---
 
