@@ -32,23 +32,23 @@
 
 ## アプリケーション要件
 
-- artistテーブル
+- artistテーブル  
 各albumにはその作成者となるartistがいる。  
 ※コンピレーションアルバムなど、共作となる作品のために多対多とする。
 
-- albumテーブル
+- albumテーブル  
 各albumは、各userのつけるtagによって評価される。  
 ※最大3つのタグがつく仕様とする。
 
-- usersテーブル
+- usersテーブル(deviseにより作成)  
 各userは、deviseによるサインイン情報(email、password等)の他に、ユーザ名やアイコンを設定できる。
 
-- tagsテーブル
-tagはアプリケーション作成時に定義しておき、各userはその中から選んで評価をすることとなる。
+- tagsテーブル(acts-as-taggable-onにより作成)  
+各userは、あらかじめ定義されたtagから最大3つを選び、albumの評価をする。
 
 ## DB設計
 
-[ER図](https://i.imgur.com/oMWL5vI.png)
+[ER図](https://i.imgur.com/Sw1dA9m.png)
 
 ### artistsテーブル
 
@@ -90,7 +90,7 @@ tagはアプリケーション作成時に定義しておき、各userはその�
 
 ---
 
-### album_usersテーブル
+### user_albumsテーブル
 
 |Column|Type|Options|
 |------|----|-------|
@@ -103,19 +103,6 @@ tagはアプリケーション作成時に定義しておき、各userはその�
 
 ---
 
-### album_tagsテーブル
-
-|Column|Type|Options|
-|------|----|-------|
-|album_id|integer|null: false, foreign_key: true|
-|tag_id|integer|foreign_key: true|
-
-#### Association
-- has_many :albums
-- has_many :tags
-
----
-
 ### usersテーブル
 
 |Column|Type|Options|
@@ -125,7 +112,9 @@ tagはアプリケーション作成時に定義しておき、各userはその�
 
 #### Association
 - has_many :user_albums
+- has_many :taggings
 - has_many :albums, through: user_albums
+- has_many :users, through: taggings
 
 ---
 
@@ -134,7 +123,24 @@ tagはアプリケーション作成時に定義しておき、各userはその�
 |Column|Type|Options|
 |------|----|-------|
 |name|text|null: false, foreign_key: true, unique: true|
+|taggings_count|integer| |
 
 #### Association
-- has_many :album_tags
-- has_many :albums, through: album_tags
+- has_many :taggings
+- has_many :albums, through: taggings
+- has_many :users, through: taggings
+
+---
+
+### taggingsテーブル
+※tagsテーブルとusersテーブル、albumsテーブル間の中間テーブル。acts-as-taggable-onにより作成。
+
+|Column|Type|Options|
+|------|----|-------|
+|tag_id|integer|foreign_key: true|
+|taggable_id|integer|foreign_key: true|
+
+#### Assosiation
+- has_many :users
+- has_many :tags
+- has_many :albums
