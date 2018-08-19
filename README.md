@@ -48,7 +48,7 @@
 
 ## DB設計
 
-[ER図](https://i.imgur.com/Sw1dA9m.png)
+[ER図](https://i.imgur.com/OWAsPyg.png)
 
 ### artistsテーブル
 
@@ -85,6 +85,7 @@
 #### Associasion
 - has_many :artist_albums
 - has_many :user_albums
+- acts_as_taggable
 - has_many :artists, through: artist_albums
 - has_many :users, through: user_albums
 
@@ -112,9 +113,8 @@
 
 #### Association
 - has_many :user_albums
-- has_many :taggings
+- acts_as_taggable
 - has_many :albums, through: user_albums
-- has_many :tags, through: taggings
 
 ---
 
@@ -126,7 +126,7 @@
 |taggings_count|integer| |
 
 #### Association
-- has_many :taggings
+- belongs_to :tagging
 - has_many :albums, through: taggings
 - has_many :users, through: taggings
 
