@@ -40,10 +40,10 @@
 各albumは、各userのつけるtagによって評価される。  
 ※最大3つのタグがつく仕様とする。
 
-- usersテーブル(deviseにより作成)  
+- usersテーブル(deviseにより生成)  
 各userは、deviseによるサインイン情報(email、password等)の他に、ユーザ名やアイコンを設定できる。
 
-- tagsテーブル(acts-as-taggable-onにより作成)  
+- tagsテーブル(acts-as-taggable-onにより生成)  
 各userは、あらかじめ定義されたtagから最大3つを選び、albumの評価をする。
 
 ## DB設計
@@ -84,14 +84,13 @@
 
 #### Associasion
 - has_many :artist_albums
-- has_many :user_albums
 - acts_as_taggable
 - has_many :artists, through: artist_albums
-- has_many :users, through: user_albums
 
 ---
 
 ### usersテーブル
+※deviseにより生成。
 
 |Column|Type|Options|
 |------|----|-------|
@@ -99,13 +98,12 @@
 |icon|string| |
 
 #### Association
-- has_many :user_albums
 - acts_as_taggable
-- has_many :albums, through: user_albums
 
 ---
 
 ### tagsテーブル
+※acts-as-taggable-onにより生成。
 
 |Column|Type|Options|
 |------|----|-------|
@@ -120,11 +118,13 @@
 ---
 
 ### taggingsテーブル
-※tagsテーブルとusersテーブル、albumsテーブル間の中間テーブル。acts-as-taggable-onにより作成。
+※tagsテーブルとusersテーブル、albumsテーブルによるポリモーフィック関連。  
+acts-as-taggable-onにより生成。
 
 |Column|Type|Options|
 |------|----|-------|
 |tag_id|integer|foreign_key: true|
+|taggable_type|text|null: false|
 |taggable_id|integer|foreign_key: true|
 
 #### Assosiation
