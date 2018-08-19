@@ -112,8 +112,6 @@
 
 #### Association
 - belongs_to :tagging
-- has_many :albums, through: taggings
-- has_many :users, through: taggings
 
 ---
 
@@ -128,6 +126,4 @@ acts-as-taggable-onにより生成。
 |taggable_id|integer|foreign_key: true|
 
 #### Assosiation
-- has_many :users
 - has_many :tags
-- has_many :albums
