@@ -91,19 +91,6 @@
 
 ---
 
-### user_albumsテーブル
-
-|Column|Type|Options|
-|------|----|-------|
-|album_id|integer|null: false, foreign_key: true|
-|user_id|integer|foreign_key: true|
-
-#### Association
-- has_many :albums
-- has_many :users
-
----
-
 ### usersテーブル
 
 |Column|Type|Options|
