@@ -56,4 +56,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'bootstrap-sass', '~> 3.3.7'
 gem 'acts-as-taggable-on', '~> 6.0'
 gem 'devise'
+gem 'haml-rails'
 gem 'paperclip', '~> 6.0.0'
