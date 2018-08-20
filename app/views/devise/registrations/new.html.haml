@@ -11,7 +11,7 @@
     = f.email_field :email, autocomplete: "email"
   .field
     = f.label :password
-    - if @validatable
+    - if @minimum_password_length
       %em
         (#{@minimum_password_length} characters minimum)
     %br/
