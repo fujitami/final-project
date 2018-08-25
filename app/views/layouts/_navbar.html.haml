@@ -1,0 +1,13 @@
+%nav.navbar.navbar-expand-md.navbar-light.bg-light.navbar-fixed-top.w-100
+  %a.navbar-brand.justify-content-start{ href: '#'} Application Name
+  %ul.nav.navbar-nav.navbar-right.list-inline.w-100.nav-justified.justify-content-end
+    - if user_signed_in?
+      %li.list-inline-item#user-sign-out
+        %button.btn.btn-light.d-flex.align-items-center{type: 'button', onclick: "location.href='/users/sign_out'"} サインアウト
+      %li.list-inline-item#user-mypage
+        %button.btn.btn-info.d-flex.align-items-center{type: 'button', onclick: "location.href='#'"} マイページ
+    - else
+      %li.list-inline-item#user-sign-in
+        %button.btn.btn-light.d-flex.align-items-center{type: 'button', onclick: "location.href='/users/sign_out'"} ログイン
+      %li.list-inline-item#user-mypage
+        %button.btn.btn-primary.d-flex.align-items-center{type: 'button', onclick: "location.href='#'"} 新規登録
