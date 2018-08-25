@@ -1,0 +1,32 @@
+.row.justify-content-center.display-3{ href: '#'}
+  %u.application-name
+    Applicaton Name
+
+.input-group.artist-name-search.w-75.mx-auto
+  %input.form-control{type: 'text', placeholder: 'artist name search'}
+  .input-group-append
+    %button.btn.btn-dark{type: 'submit'}
+      .fa.fa-search
+
+.tag-search.mx-auto
+  %h3.tag-search__title.mx-3
+    tag search
+  %ul.list-inline.row.justify-content-center
+    %li.list-inline-item.mx-3
+      %button.btn.btn-orange400#tag-happy{type: 'button', onclick: "location.href='#'"}
+        happy
+    %li.list-inline-item.mx-3
+      %button.btn.btn-red400#tag-anger{type: 'button', onclick: "location.href='#'"}
+        mad
+    %li.list-inline-item.mx-3
+      %button.btn.btn-indigo400#tag-sad{type: 'button', onclick: "location.href='#'"}
+        sad
+    %li.list-inline-item.mx-3
+      %button.btn.btn-amber400#tag-surprise{type: 'button', onclick: "location.href='#'"}
+        surprise
+    %li.list-inline-item.mx-3
+      %button.btn.btn-purple400#tag-fear{type: 'button', onclick: "location.href='#'"}
+        fear
+    %li.list-inline-item.mx-3
+      %button.btn.btn-bluegrey400#tag-disgust{type: 'button', onclick: "location.href='#'"}
+        disgust
