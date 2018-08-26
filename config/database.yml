@@ -50,5 +50,6 @@ test:
 production:
   <<: *default
   database: final-project_production
-  username: final-project
-  password: <%= ENV['FINAL-PROJECT_DATABASE_PASSWORD'] %>
+  username: root
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  socket: /var/lib/mysql/mysql.sock
