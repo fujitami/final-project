@@ -1,13 +1,13 @@
 %nav.navbar.navbar-expand-md.navbar-light.bg-light.navbar-fixed-top.w-100
-  %a.navbar-brand.justify-content-start{ href: '#'} Application Name
+  %a.navbar-brand.justify-content-start{ href: root_path } Application Name
   %ul.nav.navbar-nav.navbar-right.list-inline.w-100.nav-justified.justify-content-end
     - if user_signed_in?
       %li.list-inline-item#user-sign-out
-        %button.btn.btn-light.d-flex.align-items-center{type: 'button', onclick: "location.href='/users/sign_out'"} サインアウト
+        = link_to 'サインアウト', destroy_user_session_path, method: :delete, class: 'btn btn-light d-flex align-items-center'
       %li.list-inline-item#user-mypage
-        %button.btn.btn-info.d-flex.align-items-center{type: 'button', onclick: "location.href='#'"} マイページ
+        = link_to 'マイページ', user_path(current_user), class: 'btn btn-info d-flex align-items-center'
     - else
       %li.list-inline-item#user-sign-in
-        %button.btn.btn-light.d-flex.align-items-center{type: 'button', onclick: "location.href='/users/sign_out'"} ログイン
+        = link_to 'サインイン', new_user_session_path, class: 'btn btn-light d-flex align-items-center'
       %li.list-inline-item#user-mypage
-        %button.btn.btn-primary.d-flex.align-items-center{type: 'button', onclick: "location.href='#'"} 新規登録
+        = link_to '新規登録', new_user_registration_path, class: 'btn btn-primary d-flex align-items-center'
