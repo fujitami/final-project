@@ -1,13 +1,13 @@
-%nav.navbar.navbar-expand-md.navbar-light.bg-light.navbar-fixed-top.w-100
+%nav.navbar.navbar-expand-md.navbar-light.bg-light.fixed-top.w-100
   %a.navbar-brand.justify-content-start{ href: root_path } Application Name
   %ul.nav.navbar-nav.navbar-right.list-inline.w-100.nav-justified.justify-content-end
     - if user_signed_in?
-      %li.list-inline-item#user-sign-out
-        = link_to 'サインアウト', destroy_user_session_path, method: :delete, class: 'btn btn-light d-flex align-items-center'
-      %li.list-inline-item#user-mypage
+      %li#user-sign-out.list-inline-item
+        = button_to 'サインアウト', destroy_user_session_path, method: :delete, class: 'btn btn-light d-flex align-items-center'
+      %li#user-mypage.list-inline-item
         = link_to 'マイページ', user_path(current_user), class: 'btn btn-info d-flex align-items-center'
     - else
-      %li.list-inline-item#user-sign-in
+      %li#user-sign-in.list-inline-item
         = link_to 'サインイン', new_user_session_path, class: 'btn btn-light d-flex align-items-center'
-      %li.list-inline-item#user-mypage
+      %li#user-mypage.list-inline-item
         = link_to '新規登録', new_user_registration_path, class: 'btn btn-primary d-flex align-items-center'
