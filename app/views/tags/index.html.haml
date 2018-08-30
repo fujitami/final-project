@@ -1,32 +1,34 @@
-.row.justify-content-center.display-3{ href: '#'}
-  %u.application-name
-    Applicaton Name
+#application-name.row.justify-content-center.display-3{ href: '#'}
+  %u Applicaton Name
 
-.input-group.artist-name-search.w-75.mx-auto
-  %input.form-control{type: 'text', placeholder: 'artist name search'}
-  .input-group-append
-    %button.btn.btn-dark{type: 'submit'}
-      .fa.fa-search
+#artist-name-search
+  %h4#artist-name-search__title.row.justify-content-center
+    アーティスト名で検索
+  #artist-name-search__form.input-group.w-75.mx-auto
+    %input.form-control{type: 'text', placeholder: 'artist name search'}
+    .input-group-append
+      %button.btn.btn-dark{type: 'submit'}
+        .fa.fa-search
 
-.tag-search.mx-auto
-  %h3.tag-search__title.mx-3.w-75
-    tag search
-  %ul.list-inline.row.justify-content-center
+#tag-search
+  %h4#tag-search__title.row.justify-content-center
+    アルバムの印象で検索
+  %ul#tag-search__list.list-inline.row.justify-content-center
     %li.list-inline-item.mx-3
-      %button.btn.btn-orange400#tag-happy{type: 'button', onclick: "location.href='#'"}
+      %button#tag-happy.btn.btn-orange400{type: 'button', onclick: "location.href='#'"}
         happy
     %li.list-inline-item.mx-3
-      %button.btn.btn-red400#tag-anger{type: 'button', onclick: "location.href='#'"}
+      %button#tag-anger.btn.btn-red400{type: 'button', onclick: "location.href='#'"}
         mad
     %li.list-inline-item.mx-3
-      %button.btn.btn-indigo400#tag-sad{type: 'button', onclick: "location.href='#'"}
+      %button#tag-sad.btn.btn-indigo400{type: 'button', onclick: "location.href='#'"}
         sad
     %li.list-inline-item.mx-3
-      %button.btn.btn-amber400#tag-surprise{type: 'button', onclick: "location.href='#'"}
+      %button#tag-surprise.btn.btn-amber400{type: 'button', onclick: "location.href='#'"}
         surprise
     %li.list-inline-item.mx-3
-      %button.btn.btn-purple400#tag-fear{type: 'button', onclick: "location.href='#'"}
+      %button#tag-fear.btn.btn-purple400{type: 'button', onclick: "location.href='#'"}
         fear
     %li.list-inline-item.mx-3
-      %button.btn.btn-bluegrey400#tag-disgust{type: 'button', onclick: "location.href='#'"}
+      %button#tag-disgust.btn.btn-bluegrey400{type: 'button', onclick: "location.href='#'"}
         disgust
