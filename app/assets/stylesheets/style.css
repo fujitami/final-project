@@ -1,0 +1,56 @@
+
+@font-face {
+  font-family: "Yu Gothic" !important;
+  src: local("Yu Gothic Medium") !important;
+  font-weight: 100;
+}
+
+@font-face {
+  font-family: "Yu Gothic" !important;
+  src: local("Yu Gothic Medium") !important;
+  font-weight: 200;
+}
+
+@font-face {
+  font-family: "Yu Gothic" !important;
+  src: local("Yu Gothic Medium") !important;
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: "Yu Gothic" !important;
+  src: local("Yu Gothic Medium") !important;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Yu Gothic" !important;
+  src: local("Yu Gothic Bold") !important;
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: "Helvetica Neue" !important;
+  src: local("Helvetica Neue Regular") !important;
+  font-weight: 100;
+}
+
+@font-face {
+  font-family: "Helvetica Neue" !important;
+  src: local("Helvetica Neue Regular") !important;
+  font-weight: 200;
+}
+
+body,
+tooltip,
+popover {
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Yu Gothic", YuGothic, Verdana, Meiryo, "M+ 1p", sans-serif !important;
+}
+
+@media all and (-ms-high-contrast: none) {
+  body,
+  tooltip,
+  popover {
+    font-family: Verdana, Meiryo, sans-serif;
+  }
+}
