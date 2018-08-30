@@ -1,27 +1,11 @@
-%h2 Sign up
-= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-  = devise_error_messages!
-  .field
-    = f.label :name
-    %br/
-    = f.text_field :name, autofocus: true
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autocomplete: "email"
-  .field
-    = f.label :password
-    - if @minimum_password_length
-      %em
-        (#{@minimum_password_length} characters minimum)
-    %br/
-    = f.password_field :password, autocomplete: "new-password"
-  .field
-    = f.label :password_confirmation
-    %br/
-    = f.password_field :password_confirmation, autocomplete: "new-password"
-  .field
-    = f.file_field :icon
-  .actions
-    = f.submit "Sign up"
-= render "devise/shared/links"
+#registration.row
+  .col-sm-8.col-sm-offset-3.mx-auto
+    %h2 新規登録
+    = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+      = devise_error_messages!
+
+      #registration__form
+        %h5 サインイン情報
+        = render partial: 'devise/shared/form', locals: { f: f }
+
+    = render partial: 'devise/shared/links'

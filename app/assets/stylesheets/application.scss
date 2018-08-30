@@ -11,9 +11,12 @@
  * It is generally better to create a new file per style scope.
  *
  *= require font-awesome
+ *= require_tree .
  */
 
 @import "bootstrap";
 @import "cb-materialbtn.min";
+@import "font-awesome";
+@import "modules/common";
 @import "modules/tag";
-@import "font-awesome"
+@import "modules/user"

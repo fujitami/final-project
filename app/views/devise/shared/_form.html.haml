@@ -1,0 +1,33 @@
+.form-group
+  = f.label :email, 'メールアドレス'
+  = f.email_field :email, autofocus: true,autocomplete: 'email', class: 'form-control'
+.form-group
+  = f.label :password, 'パスワード'
+  - if @minimum_password_length
+    %em
+      (#{@minimum_password_length}文字以上)
+  = f.password_field :password, autocomplete: 'new-password', class: 'form-control'
+
+- if controller_name != 'sessions'
+  .form-group
+    = f.label :password_confirmation, 'パスワードの確認'
+    = f.password_field :password_confirmation, placeholder: '入力したパスワードを再入力してください', autocomplete: 'new-password', class: 'form-control'
+
+  #registration__form--profile
+    %h5 プロフィール情報
+    .form-group
+      = f.label :name, 'アカウント名'
+      = f.text_field :name, class: 'form-control'
+    .form-group
+      = f.label :icon, 'アイコン(jpgまたはpng形式)'
+      = f.file_field :icon, id: 'upload-icon__form', class: 'form-control-file'
+    .actions
+      = f.submit '登録', id: 'signup__btn', class: 'btn btn-primary'
+
+- else
+  - if devise_mapping.rememberable?
+    .form-group
+      = f.check_box :remember_me
+      = f.label :remember_me, '入力内容を記憶する'
+  .actions
+    = f.submit 'サインイン', id: 'signin__btn', class: "btn btn-primary"
