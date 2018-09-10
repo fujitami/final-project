@@ -1,14 +1,12 @@
-#application-name.row.justify-content-center.display-3{ href: '#'}
-  %u Applicaton Name
+#application-name.row.justify-content-center.display-3.pt-3{ href: '#'}
+  %u Application Name
 
 #artist-name-search
   %h4#artist-name-search__title.row.justify-content-center
     アーティスト名で検索
-  #artist-name-search__form.input-group.w-75.mx-auto
-    %input.form-control{type: 'text', placeholder: 'artist name search'}
-    .input-group-append
-      %button.btn.btn-dark{type: 'submit'}
-        .fa.fa-search
+  #artist-name-search__forms.input-group.w-75.mx-auto
+    %input#artist-name-search__form.form-control{type: 'text', placeholder: 'artist name search'}
+  #artist-name-search__results.w-75.mx-auto
 
 #tag-search
   %h4#tag-search__title.row.justify-content-center
