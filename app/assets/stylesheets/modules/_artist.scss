@@ -1,0 +1,37 @@
+@import "variable";
+
+#artist--wrapper {
+  width: 100%;
+}
+
+#artist-name-search {
+  min-height: 250px;
+  padding: 50px 0;
+  background-size: cover;
+  background-position: center;
+}
+
+#artist-name-search--bgmask {
+  height: 150px;
+  width: 100%;
+  margin: 0;
+  background-color: $whiteOpacity5;
+}
+
+#artist-name-search__title--wrapper {
+  padding: 20px 10px;
+}
+
+#artist-name-search__title h2 {
+  margin: 0;
+}
+
+#artist-name-search__form--wrapper {
+  max-width: 350px;
+  padding: 20px 10px;
+}
+
+#artist-name-search__title--img img {
+  height: 150px;
+  width: 150px;
+}
