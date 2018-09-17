@@ -8,7 +8,6 @@ $(function () {
       dataType: 'json'
     })
     .done(function(data){
-      console.log(data);
       search(data);
     })
     .fail(function(){
@@ -26,7 +25,6 @@ $(function () {
     var refreshTokenVar = secrets.refreshToken;
     var proxyurl = 'https://cors-anywhere.herokuapp.com/';
     var requireTokenUrl = 'https://accounts.spotify.com/api/token';
-    console.log(refreshTokenVar);
 
     // 検索機能のための変数定義
     // アーティスト検索(GET https://api.spotify.com/v1/search)
@@ -83,7 +81,7 @@ $(function () {
     $('#artist-name-search__form').on('keyup', function() {
       if(location.pathname.match(/\/$/) || location.pathname.match(/\/tags\/$/)) {
         requireToken();
-      } else {}
+      }
       var input = $('#artist-name-search__form').val();
       var authorizationCode = {
         'Accept': 'application/json',
@@ -178,8 +176,6 @@ $(function () {
         dataType: 'json'
       })
       .done(function(data){
-        console.log(data.items[0]);
-        console.log(data.items[0].images[0].url);
         var artistAlbums = data.items;
         for (i=0; i<artistAlbums.length; i++) {;
           var albumThumbUrl = artistAlbums[i].images[0].url;
