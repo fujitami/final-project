@@ -151,7 +151,6 @@ $(function () {
         dataType: 'json'
       })
       .done(function(data){
-        console.log(data);
         var artistName = `<h2 class="align-middle">${ data.name }</h2>`
         var artistImg = data.images[0].url
         artistNameSearchTitle.append(artistName);
