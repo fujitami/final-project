@@ -17,10 +17,32 @@ body {
 }
 
 // アルバム一覧(タグ検索、アーティスト検索、マイページで共通)
-#album-index {
+.album-index {
   padding: 40px 0;
 }
 
-#album-index__thumbnail {
+.album-index__lists {
+  background-color: rgba(255,255,255,0.5);
+  height: 150px;
+  overflow-x: scroll;
+  white-space: nowrap;
+}
+
+.album-index__list {
+  font-size: 15px;
+  font-weight: normal;
+}
+
+.album-index__btn {
+  height: 105px;
+  width: 105px;
+}
+
+.album-index__thumbnail--wrapper {
   height: 80px;
+  width: 80px;
+}
+
+.album-index__name {
+  width: 105px;
 }
