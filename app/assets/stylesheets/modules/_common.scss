@@ -1,3 +1,5 @@
+@import "variable";
+
 body {
   height: 700px;
   min-width: 540px;
@@ -22,7 +24,7 @@ body {
 }
 
 .album-index__lists {
-  background-color: rgba(255,255,255,0.5);
+  background-color: $whiteOpacity5;
   height: 150px;
   overflow-x: scroll;
   white-space: nowrap;
