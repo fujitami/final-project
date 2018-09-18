@@ -1,0 +1,39 @@
+#album--wrapper
+  #album-search--upper
+    -# タイトル(アーティスト名・画像)
+    #album-search--bgmask.row.justify-content-start.d-flex.align-items-center
+      #artist-name-search__title--wrapper.col-md-auto
+        #album-search__title
+        #album-search__title--img
+
+  #album-search--lower.justify-content-around.d-flex.mx-auto
+    -# タグ選択
+    #album-search__tags
+      %h4#album-search__tags--title.text-center.pb-4
+        このアルバムの印象は？
+        -# タグ一覧
+      %ul#album-search__tags--lists.list-inline.row.justify-content-center.d-flex
+        %li.list-inline-item.col-4.pb-3
+          %button#tag-happy.btn.btn-orange400.d-block.mx-auto{type: 'button', onclick: "location.href='#'"}
+            happy
+        %li.list-inline-item.col-4.pb-3
+          %button#tag-anger.btn.btn-red400.d-block.mx-auto{type: 'button', onclick: "location.href='#'"}
+            mad
+        %li.list-inline-item.w-100
+        %li.list-inline-item.col-4.pb-3
+          %button#tag-sad.btn.btn-indigo400.d-block.mx-auto{type: 'button', onclick: "location.href='#'"}
+            sad
+        %li.list-inline-item.col-4.pb-3
+          %button#tag-surprise.btn.btn-amber400.d-block.mx-auto{type: 'button', onclick: "location.href='#'"}
+            surprise
+        %li.list-inline-item.w-100
+        %li.list-inline-item.col-4.pb-3
+          %button#tag-fear.btn.btn-purple400.d-block.mx-auto{type: 'button', onclick: "location.href='#'"}
+            fear
+        %li.list-inline-item.col-4.pb-3
+          %button#tag-disgust.btn.btn-bluegrey400.d-block.mx-auto{type: 'button', onclick: "location.href='#'"}
+            disgust
+
+    -# 試聴プレイヤ
+    #album-search__audition
+      %iframe#spotify-player{ width: '320', height: '250', frameborder: '0', allowtransparency: 'true', allow: 'encrypted-media' }
