@@ -23,21 +23,24 @@ $(function () {
     var base64IdAndSecret = window.btoa(clientIdAndSecretVar);
     var accessToken = '';
     var refreshTokenVar = secrets.refreshToken;
-    var proxyurl = 'https://cors-anywhere.herokuapp.com/';
-    var requireTokenUrl = 'https://accounts.spotify.com/api/token';
+    const proxyurl = 'https://cors-anywhere.herokuapp.com/';
+    const requireTokenUrl = 'https://accounts.spotify.com/api/token';
 
     // 検索機能のための変数定義
     // アーティスト検索(GET https://api.spotify.com/v1/search)
-    var searchItemUrl = 'https://api.spotify.com/v1/search';
+    const searchItemUrl = 'https://api.spotify.com/v1/search';
     var artistSearchIndex = $('#artist-name-search__results');
     // アーティスト詳細(GET https://api.spotify.com/v1/artists/{id})及びアルバム検索(GET https://api.spotify.com/v1/artists/{id}/albums)
-    var searchArtistInfoUrl = 'https://api.spotify.com/v1/artists/';
+    const searchArtistInfoUrl = 'https://api.spotify.com/v1/artists/';
+    // アルバム検索(GET https://api.spotify.com/v1/albums/{id})
+    const searchAlbumInfoUrl = 'https://api.spotify.com/v1/albums/';
 
     // アルバム一覧の描画(アーティスト詳細・タグ検索結果・マイページ共通で使用予定)
-    function appendAlbumIndex(albumThumbUrl, albumName) {
+    function appendAlbumIndex(albumThumbUrl, albumName, albumId) {
       var artistAlbumIndex = $('.album-index__lists');
+      var albumShowUrl = '/albums/' + albumId
       var html = `<li class="album-index__list list-inline-item mx-3 pt-3">
-                    <button class="album-index__btn btn btn-orange400" type="button" onclick="location.href='#'">
+                    <button class="album-index__btn btn btn-orange400" type="button" onclick="location.href='${ albumShowUrl }'">
                       <div class="album-index__thumbnail--wrapper">
                         <img class="album-index__thumbnail img-thumbnail" src=${ albumThumbUrl }>
                       </div>
@@ -65,9 +68,12 @@ $(function () {
       .done(function(data) {
         accessToken = data.access_token;
         if (location.pathname.match(/\/artists\/([a-zA-Z0-9]{22})$/)) { //アーティスト詳細ページにいる際の処理
-          var spotifyId = location.pathname.split('/')[2];
-          artistInfo(accessToken, spotifyId);
-          artistAlbumIndex(accessToken, spotifyId);
+          var spotifyArtistId = location.pathname.split('/')[2];
+          artistInfo(accessToken, spotifyArtistId);
+          artistAlbumIndex(accessToken, spotifyArtistId);
+        } else if (location.pathname.match(/\/albums\/([a-zA-Z0-9]{22})$/)) { //アルバム詳細ページにいる際の処理
+          var spotifyAlbumId = location.pathname.split('/')[2];
+          albumInfo(accessToken, spotifyAlbumId);
         } else {
           console.log('fail id');
         }
@@ -129,14 +135,14 @@ $(function () {
       });
     }
 
-    // アーティスト詳細ページへのビュー追加(アーティスト名、アルバム情報)
-    // アーティスト詳細ページでのアクセストークン取得
-    if (location.pathname.match(/\/artists\/([a-zA-Z0-9]{22})$/)) {
+    // 詳細ページでのアクセストークン取得
+    if (location.pathname.match(/\/artists\/([a-zA-Z0-9]{22})$/) || location.pathname.match(/\/albums\/([a-zA-Z0-9]{22})$/)) {
       requireToken();
     }
 
+    // アーティスト詳細ページへのビュー追加(アーティスト名、アルバム情報)
     // アーティスト詳細情報の取得
-    function artistInfo(accessToken, spotifyId) {
+    function artistInfo(accessToken, spotifyArtistId) {
       var artistNameSearch = $('#artist-name-search');
       var artistNameSearchTitle = $('#artist-name-search__title');
       var authorizationCode = {
@@ -145,7 +151,7 @@ $(function () {
         'Authorization': 'Bearer ' + accessToken
       }
       $.ajax({
-        url: searchArtistInfoUrl + spotifyId,
+        url: searchArtistInfoUrl + spotifyArtistId,
         type: 'GET',
         headers: authorizationCode,
         dataType: 'json'
@@ -157,19 +163,19 @@ $(function () {
         artistNameSearch.css('background-image', 'url(' + artistImg + ')');
       })
       .fail(function(){
-        console.log('fail info');
+        console.log('fail artist info');
       });
     }
 
     // 当該アーティストのアルバム一覧取得
-    function artistAlbumIndex(accessToken, spotifyId) {
+    function artistAlbumIndex(accessToken, spotifyArtistId) {
       var authorizationCode = {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
         'Authorization': 'Bearer ' + accessToken
       }
       $.ajax({
-        url: searchArtistInfoUrl + spotifyId + '/albums',
+        url: searchArtistInfoUrl + spotifyArtistId + '/albums',
         type: 'GET',
         headers: authorizationCode,
         dataType: 'json'
@@ -179,11 +185,40 @@ $(function () {
         for (i=0; i<artistAlbums.length; i++) {;
           var albumThumbUrl = artistAlbums[i].images[0].url;
           var albumName = artistAlbums[i].name;
-          appendAlbumIndex(albumThumbUrl, albumName);
+          var albumId = artistAlbums[i].id;
+          appendAlbumIndex(albumThumbUrl, albumName, albumId);
         }
       })
       .fail(function(){
         console.log('fail album');
+      });
+    }
+
+    // アルバム詳細情報の取得
+    function albumInfo(accessToken, spotifyAlbumId) {
+      var albumSearchUpper = $('#album-search--upper');
+      var albumSearchTitle = $('#album-search__title');
+      var spotifyPlayer = $('#spotify-player');
+      var authorizationCode = {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + accessToken
+      }
+      $.ajax({
+        url: searchAlbumInfoUrl + spotifyAlbumId,
+        type: 'GET',
+        headers: authorizationCode,
+        dataType: 'json'
+      })
+      .done(function(data){
+        var albumName = `<h2 class="align-middle">${ data.name }</h2>`
+        var albumImg = data.images[0].url
+        albumSearchTitle.append(albumName);
+        albumSearchUpper.css('background-image', 'url(' + albumImg + ')');
+        spotifyPlayer.attr('src', ('https://open.spotify.com/embed/album/' + spotifyAlbumId));
+      })
+      .fail(function(){
+        console.log('fail album info');
       });
     }
 

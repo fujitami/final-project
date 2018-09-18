@@ -1,0 +1,40 @@
+@import "variable";
+
+#album--wrapper {
+  width: 100%;
+}
+
+#album-search--upper {
+  min-height: 250px;
+  padding: 50px 0;
+  background-size: cover;
+  background-position: center;
+}
+
+#album-search--bgmask {
+  height: 150px;
+  width: 100%;
+  margin: 0;
+  background-color: $whiteOpacity5;
+}
+
+#artist-name-search__title--wrapper {
+  padding: 20px 10px;
+}
+
+#album-search__title h2 {
+  margin: 0;
+}
+
+#album-search__title--img img {
+  height: 150px;
+  width: 150px;
+}
+
+#album-search--lower {
+  padding: 40px 0;
+}
+
+#album-search__tags {
+  max-width: 320px;
+}
