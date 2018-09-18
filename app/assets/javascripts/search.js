@@ -23,17 +23,17 @@ $(function () {
     var base64IdAndSecret = window.btoa(clientIdAndSecretVar);
     var accessToken = '';
     var refreshTokenVar = secrets.refreshToken;
-    var proxyurl = 'https://cors-anywhere.herokuapp.com/';
-    var requireTokenUrl = 'https://accounts.spotify.com/api/token';
+    const proxyurl = 'https://cors-anywhere.herokuapp.com/';
+    const requireTokenUrl = 'https://accounts.spotify.com/api/token';
 
     // 検索機能のための変数定義
     // アーティスト検索(GET https://api.spotify.com/v1/search)
-    var searchItemUrl = 'https://api.spotify.com/v1/search';
+    const searchItemUrl = 'https://api.spotify.com/v1/search';
     var artistSearchIndex = $('#artist-name-search__results');
     // アーティスト詳細(GET https://api.spotify.com/v1/artists/{id})及びアルバム検索(GET https://api.spotify.com/v1/artists/{id}/albums)
-    var searchArtistInfoUrl = 'https://api.spotify.com/v1/artists/';
+    const searchArtistInfoUrl = 'https://api.spotify.com/v1/artists/';
     // アルバム検索(GET https://api.spotify.com/v1/albums/{id})
-    var searchAlbumInfoUrl = 'https://api.spotify.com/v1/albums/';
+    const searchAlbumInfoUrl = 'https://api.spotify.com/v1/albums/';
 
     // アルバム一覧の描画(アーティスト詳細・タグ検索結果・マイページ共通で使用予定)
     function appendAlbumIndex(albumThumbUrl, albumName, albumId) {
