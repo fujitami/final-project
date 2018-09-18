@@ -19,4 +19,4 @@
 public/assets/*
 public/system/users/*
 node_modules/*
-secrets.yml
+config/secrets.yml
