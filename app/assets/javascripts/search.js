@@ -38,7 +38,7 @@ $(function () {
     // アルバム一覧の描画(アーティスト詳細・タグ検索結果・マイページ共通で使用予定)
     function appendAlbumIndex(albumThumbUrl, albumName, albumId) {
       var artistAlbumIndex = $('.album-index__lists');
-      var albumShowUrl = '/albums/' + albumId
+      var albumShowUrl = '/albums/' + albumId;
       var html = `<li class="album-index__list list-inline-item mx-3 pt-3">
                     <button class="album-index__btn btn btn-orange400" type="button" onclick="location.href='${ albumShowUrl }'">
                       <div class="album-index__thumbnail--wrapper">
@@ -182,7 +182,7 @@ $(function () {
       })
       .done(function(data){
         var artistAlbums = data.items;
-        for (i=0; i<artistAlbums.length; i++) {;
+        for (i=0; i<artistAlbums.length; i++) {
           var albumThumbUrl = artistAlbums[i].images[0].url;
           var albumName = artistAlbums[i].name;
           var albumId = artistAlbums[i].id;
@@ -196,6 +196,7 @@ $(function () {
 
     // アルバム詳細情報の取得
     function albumInfo(accessToken, spotifyAlbumId) {
+      buttonDisabled(spotifyAlbumId);
       var albumSearchUpper = $('#album-search--upper');
       var albumSearchTitle = $('#album-search__title');
       var spotifyPlayer = $('#spotify-player');
@@ -211,14 +212,56 @@ $(function () {
         dataType: 'json'
       })
       .done(function(data){
-        var albumName = `<h2 class="align-middle">${ data.name }</h2>`
-        var albumImg = data.images[0].url
+        var albumName = `<h2 class="align-middle">${ data.name }</h2>`;
+        var albumImg = data.images[0].url;
         albumSearchTitle.append(albumName);
         albumSearchUpper.css('background-image', 'url(' + albumImg + ')');
         spotifyPlayer.attr('src', ('https://open.spotify.com/embed/album/' + spotifyAlbumId));
+        taggingAlbum(spotifyAlbumId);
       })
       .fail(function(){
         console.log('fail album info');
+      });
+    }
+
+    // ログイン中ユーザによって既にタグ付け済みのアルバムのタグボタンを無効に
+    function buttonDisabled(albumId) {
+      if (location.pathname.match(/\/albums\/([a-zA-Z0-9]{22})$/)) {
+        $.ajax({
+          url: '/albums/' + albumId,
+          type: 'GET',
+          dataType: 'json'
+        })
+        .done(function(data){
+          if (data.btn_disabled == 1) {
+            $('.album-search_tag--btn').addClass('disabled');
+          }
+        })
+        .fail(function(){
+          console.log('fail disabled');
+        })
+      }
+    }
+
+    // アルバムへのタグ付与(albums#create)
+    function taggingAlbum(spotifyAlbumId) {
+      $('.album-search_tag--btn').click(function() {
+        var buttonVal = $(this).val();
+        $('.album-search_tag--btn').prop('disabled', true);
+        $.ajax({
+          url: '/albums',
+          type: 'POST',
+          data: {
+            spotify_id: spotifyAlbumId,
+            tag_id: buttonVal
+          }
+        })
+        .done(function(){
+          console.log('done tagging');
+        })
+        .fail(function(){
+          console.log('fail tagging');
+        });
       });
     }
 
