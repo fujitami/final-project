@@ -10,14 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180917190706) do
+ActiveRecord::Schema.define(version: 20180921134127) do
 
   create_table "albums", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.text     "name",       limit: 65535, null: false
-    t.string   "player",                   null: false
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
-    t.index ["name"], name: "index_albums_on_name", length: { name: 100 }, using: :btree
+    t.string   "spotify_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "artists", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -47,8 +45,9 @@ ActiveRecord::Schema.define(version: 20180917190706) do
   end
 
   create_table "tags", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string  "name",                       collation: "utf8_bin"
-    t.integer "taggings_count", default: 0
+    t.string  "name",                                     collation: "utf8_bin"
+    t.integer "taggings_count",               default: 0
+    t.text    "color",          limit: 65535
     t.index ["name"], name: "index_tags_on_name", unique: true, using: :btree
   end
 

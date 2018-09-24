@@ -6,8 +6,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-# アイコン画像のサイズは仮置き、保存先はS3にする予定
+  # アイコン画像のサイズは仮置き、保存先はS3にする予定
   has_attached_file :icon, styles: { medium: "300x300#", thumb: "100x100#" }
   validates_attachment_content_type :icon,content_type: ["image/jpg","image/jpeg","image/png"]
 
+  # acts-as-taggable-onの関連付け(tagger)
+  acts_as_tagger
 end
