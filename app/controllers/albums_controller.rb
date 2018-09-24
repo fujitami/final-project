@@ -33,8 +33,7 @@ class AlbumsController < ApplicationController
     params.require(:album).permit(
       :id,
       :spotify_id,
-      users_attributes: [:id],
-      # taggings_attributes: [:tag_id, :tagger_id]
+      users_attributes: [:id]
     )
   end
 
