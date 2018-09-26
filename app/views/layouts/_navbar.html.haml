@@ -1,7 +1,7 @@
 %nav.navbar.navbar-expand-md.navbar-light.bg-light.fixed-top.w-100
 
   -# アプリケーション名(クリックでトップページへ)
-  %a.navbar-brand.justify-content-start{ href: root_path } Application Name
+  = link_to 'Application Name', root_path, class: 'navbar-brand justify-content-start'
 
   -# ユーザ管理関連のボタン群
   %button.navbar-toggler{ data: {toggle: 'collapse', target: '#user-actions'}, aria: {controls: 'user-actions', expanded: 'false', label: 'ナビゲーションの切り替え'}, type: 'button' }

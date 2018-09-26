@@ -1,5 +1,12 @@
 $(function () {
 
+  // .navbar-brandをクリックしてトップページに戻った際、リロードしてトップページのJSを動かせるように
+  $(function reloadToBrandClick() {
+    $('.navbar-brand').click(function() {
+      location.reload();
+    })
+  })
+
   // 秘匿情報取得
   $(function getSecrets() {
     $.ajax({
