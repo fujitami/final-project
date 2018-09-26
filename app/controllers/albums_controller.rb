@@ -19,7 +19,6 @@ class AlbumsController < ApplicationController
     render nothing: true
     @album = Album.new(spotify_id: params[:spotify_id])
     user = current_user
-    # binding.pry
     unless Album.includes(:taggings).where("taggings.tagger_id = ?", current_user.id).references(:taggings).where(spotify_id: params[:spotify_id]).exists?
       tag_list = @album.tags_from(user)
       tag_list.add(@tag)
