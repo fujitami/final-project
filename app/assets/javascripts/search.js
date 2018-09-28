@@ -43,11 +43,11 @@ $(function () {
     const searchAlbumInfoUrl = 'https://api.spotify.com/v1/albums/';
 
     // アルバム一覧の描画(アーティスト詳細・タグ検索結果・マイページ共通で使用予定)
-    function appendAlbumIndex(albumThumbUrl, albumName, albumId) {
+    function appendAlbumIndex(albumThumbUrl, albumName, albumId, tagId) {
       var artistAlbumIndex = $('.album-index__lists');
       var albumShowUrl = '/albums/' + albumId;
       var html = `<li class="album-index__list list-inline-item mx-3 pt-3">
-                    <button class="album-index__btn btn btn-orange400" type="button" onclick="location.href='${ albumShowUrl }'">
+                    <button class="album-index__btn btn ${ addTagColor(tagId) }" type="button" onclick="location.href='${ albumShowUrl }'">
                       <div class="album-index__thumbnail--wrapper">
                         <img class="album-index__thumbnail img-thumbnail" src=${ albumThumbUrl }>
                       </div>
@@ -55,6 +55,33 @@ $(function () {
                     <p class="album-index__name text-center d-block text-truncate">${ albumName }</p>
                   </li>`
       artistAlbumIndex.append(html);
+    }
+
+    // アルバムに設定されたタグのidによって.album-index__btnにボタンの色を設定するクラスを追加
+    function addTagColor(tagId) {
+      switch (tagId) {
+        case '1':
+          return 'btn-orange400';
+          break;
+        case '2':
+          return 'btn-red400';
+          break;
+        case '3':
+          return 'btn-indigo400';
+          break;
+        case '4':
+          return 'btn-yellow400';
+          break;
+        case '5':
+          return 'btn-purple400';
+          break;
+        case '6':
+          return 'btn-grey400';
+          break;
+        case '7':
+          return 'btn-white';
+          break;
+      }
     }
 
     // 新規アクセストークン取得
@@ -81,6 +108,8 @@ $(function () {
         } else if (location.pathname.match(/\/albums\/([a-zA-Z0-9]{22})$/)) { //アルバム詳細ページにいる際の処理
           var spotifyAlbumId = location.pathname.split('/')[2];
           albumInfo(accessToken, spotifyAlbumId);
+        } else if (location.pathname.match(/\/tags\/([a-zA-Z0-9]*)$/)) { //タグ検索ページにいる時の処理
+          tagSearch(accessToken);
         } else {
           console.log('fail id');
         }
@@ -143,7 +172,7 @@ $(function () {
     }
 
     // 詳細ページでのアクセストークン取得
-    if (location.pathname.match(/\/artists\/([a-zA-Z0-9]{22})$/) || location.pathname.match(/\/albums\/([a-zA-Z0-9]{22})$/)) {
+    if (location.pathname.match(/\/artists\/([a-zA-Z0-9]{22})$/) || location.pathname.match(/\/albums\/([a-zA-Z0-9]{22})$/) || location.pathname.match(/\/tags\/([a-zA-Z0-9]*)$/)) {
       requireToken();
     }
 
@@ -193,7 +222,8 @@ $(function () {
           var albumThumbUrl = artistAlbums[i].images[0].url;
           var albumName = artistAlbums[i].name;
           var albumId = artistAlbums[i].id;
-          appendAlbumIndex(albumThumbUrl, albumName, albumId);
+          var tagId = 1; //仮置き、タグ検索結果以外の画面におけるボタン色の実装はマイページ実装後
+          appendAlbumIndex(albumThumbUrl, albumName, albumId, tagId);
         }
       })
       .fail(function(){
@@ -269,6 +299,51 @@ $(function () {
         .fail(function(){
           console.log('fail tagging');
         });
+      });
+    }
+
+
+    // タグ検索(tags#show)
+    function tagSearch(accessToken) {
+      var tagId = location.pathname.split('/')[2];
+      $.ajax({
+        url: '/tags/' + tagId,
+        type: 'GET',
+        dataType: 'json'
+      })
+      .done(function(data){
+        var tagAlbums = data;
+        for (i=0; i<tagAlbums.length; i++) {
+          tagAlbumsIndex(accessToken, tagAlbums[i].spotifyAlbumId, tagId);
+        }
+      })
+      .fail(function(){
+        console.log('fail tag search');
+      });
+    }
+
+    // タグ検索結果一覧に表示するアルバム取得
+    function tagAlbumsIndex(accessToken, spotifyAlbumId, tagId) {
+      var authorizationCode = {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + accessToken
+      }
+      $.ajax({
+        url: searchAlbumInfoUrl + spotifyAlbumId,
+        type: 'GET',
+        headers: authorizationCode,
+        dataType: 'json'
+      })
+      .done(function(data){
+        var tagAlbum = data;
+        var albumThumbUrl = tagAlbum.images[0].url;
+        var albumName = tagAlbum.name;
+        var albumId = tagAlbum.id;
+        appendAlbumIndex(albumThumbUrl, albumName, albumId, tagId);
+      })
+      .fail(function(){
+        console.log('fail tagalbums index');
       });
     }
 
