@@ -1,0 +1,15 @@
+#tag-name-search--wrapper
+  -# タイトル(タグ名)
+  - tagcolor = @tag.color
+  #tag-name-search{ style: 'background-color: ' + tagcolor + ';' }
+    #tag-name-search--bgmask.row.justify-content-between.d-flex.align-items-center
+      #tag-name-search__title--wrapper.col-md-auto
+        #tag-name-search__title
+          %h2
+            = @tag.name
+
+  -# 当該タグが多くついたアルバム一覧
+  .album-index.text-center
+    %h4.album-index__title
+      アルバム一覧
+    %ul.album-index__lists.list-inline
