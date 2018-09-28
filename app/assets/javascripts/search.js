@@ -18,7 +18,6 @@ $(function () {
       search(data);
     })
     .fail(function(){
-      console.log('fail getSecrets');
     })
   });
 
@@ -110,8 +109,6 @@ $(function () {
           albumInfo(accessToken, spotifyAlbumId);
         } else if (location.pathname.match(/\/tags\/([a-zA-Z0-9]*)$/)) { //タグ検索ページにいる時の処理
           tagSearch(accessToken);
-        } else {
-          console.log('fail id');
         }
       })
       .fail(function(data) {
@@ -152,7 +149,6 @@ $(function () {
         }
       })
       .fail(function() {
-        console.log('fail artist search');
       });
     });
 
@@ -199,7 +195,6 @@ $(function () {
         artistNameSearch.css('background-image', 'url(' + artistImg + ')');
       })
       .fail(function(){
-        console.log('fail artist info');
       });
     }
 
@@ -227,7 +222,6 @@ $(function () {
         }
       })
       .fail(function(){
-        console.log('fail album');
       });
     }
 
@@ -257,7 +251,6 @@ $(function () {
         taggingAlbum(spotifyAlbumId);
       })
       .fail(function(){
-        console.log('fail album info');
       });
     }
 
@@ -275,7 +268,6 @@ $(function () {
           }
         })
         .fail(function(){
-          console.log('fail disabled');
         })
       }
     }
@@ -294,10 +286,8 @@ $(function () {
           }
         })
         .done(function(){
-          console.log('done tagging');
         })
         .fail(function(){
-          console.log('fail tagging');
         });
       });
     }
@@ -318,7 +308,6 @@ $(function () {
         }
       })
       .fail(function(){
-        console.log('fail tag search');
       });
     }
 
@@ -343,7 +332,6 @@ $(function () {
         appendAlbumIndex(albumThumbUrl, albumName, albumId, tagId);
       })
       .fail(function(){
-        console.log('fail tagalbums index');
       });
     }
 
