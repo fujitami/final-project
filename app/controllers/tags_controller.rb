@@ -46,8 +46,8 @@ class TagsController < ApplicationController
       n_only += 1
     end
 
-    # 配列hitsの重複・nil整理
-    @album_spotify_id = hits.uniq.compact
+    # 配列hitsの重複・nil整理、ランダム表示、表示件数指定
+    @album_spotify_id = hits.uniq.compact.shuffle.sample(10)
     respond_to do |format|
       format.html
       format.json
