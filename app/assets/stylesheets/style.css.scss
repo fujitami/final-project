@@ -2,43 +2,43 @@
 @font-face {
   font-family: "Yu Gothic" !important;
   src: local("Yu Gothic Medium") !important;
-  font-weight: 100;
+  font-weight: 100 !important;
 }
 
 @font-face {
   font-family: "Yu Gothic" !important;
   src: local("Yu Gothic Medium") !important;
-  font-weight: 200;
+  font-weight: 200  !important;
 }
 
 @font-face {
   font-family: "Yu Gothic" !important;
   src: local("Yu Gothic Medium") !important;
-  font-weight: 300;
+  font-weight: 300 !important;
 }
 
 @font-face {
   font-family: "Yu Gothic" !important;
   src: local("Yu Gothic Medium") !important;
-  font-weight: 400;
+  font-weight: 400 !important;
 }
 
 @font-face {
   font-family: "Yu Gothic" !important;
   src: local("Yu Gothic Bold") !important;
-  font-weight: bold;
+  font-weight: bold !important;
 }
 
 @font-face {
   font-family: "Helvetica Neue" !important;
   src: local("Helvetica Neue Regular") !important;
-  font-weight: 100;
+  font-weight: 100 !important;
 }
 
 @font-face {
   font-family: "Helvetica Neue" !important;
   src: local("Helvetica Neue Regular") !important;
-  font-weight: 200;
+  font-weight: 200 !important;
 }
 
 body,
@@ -51,6 +51,6 @@ popover {
   body,
   tooltip,
   popover {
-    font-family: Verdana, Meiryo, sans-serif;
+    font-family: Verdana, Meiryo, sans-serif !important;
   }
 }
