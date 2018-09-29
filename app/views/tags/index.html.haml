@@ -11,24 +11,28 @@
 
 -# タグ検索ボタン
 #tag-search
-  %h4#tag-search__title.row.justify-content-center
+  %h4#tag-search__title.row.d-flex.justify-content-center
     アルバムの印象で検索
-  %ul#tag-search__list.list-inline.row.justify-content-center
-    %li.list-inline-item.mx-3
-      %button#tag-happy.btn.btn-orange400{type: 'button', onclick: "location.href='#'"}
+  %ul#tag-search__lists.list-inline.row.d-flex.justify-content-around.w-75.mx-auto
+    %li.list-inline-item.tag-search__list.col.pb-3
+      %button#tag-happy.btn.tag-btn.btn-orange400.mx-auto.d-block{type: 'button', onclick: "location.href='/tags/1'"}
         happy
-    %li.list-inline-item.mx-3
-      %button#tag-anger.btn.btn-red400{type: 'button', onclick: "location.href='#'"}
-        mad
-    %li.list-inline-item.mx-3
-      %button#tag-sad.btn.btn-indigo400{type: 'button', onclick: "location.href='#'"}
+    %li.list-inline-item.tag-search__list.col.pb-3
+      %button#tag-anger.btn.tag-btn.btn-red400.mx-auto.d-block{type: 'button', onclick: "location.href='/tags/2'"}
+        anger
+    %li.list-inline-item.tag-search__list.col.pb-3
+      %button#tag-sad.btn.tag-btn.btn-indigo400.mx-auto.d-block{type: 'button', onclick: "location.href='/tags/3'"}
         sad
-    %li.list-inline-item.mx-3
-      %button#tag-surprise.btn.btn-amber400{type: 'button', onclick: "location.href='#'"}
+    %li.list-inline-item.tag-search__list.col.pb-3
+      %button#tag-surprise.btn.tag-btn.btn-yellow400.mx-auto.d-block{type: 'button', onclick: "location.href='/tags/4'"}
         surprise
-    %li.list-inline-item.mx-3
-      %button#tag-fear.btn.btn-purple400{type: 'button', onclick: "location.href='#'"}
+    %li.w-100.d-block.d-lg-none
+    %li.list-inline-item.tag-search__list.col.pb-3
+      %button#tag-fear.btn.tag-btn.btn-purple400.mx-auto.d-block{type: 'button', onclick: "location.href='/tags/5'"}
         fear
-    %li.list-inline-item.mx-3
-      %button#tag-disgust.btn.btn-bluegrey400{type: 'button', onclick: "location.href='#'"}
+    %li.list-inline-item.tag-search__list.col.pb-3
+      %button#tag-disgust.btn.tag-btn.btn-grey400.mx-auto.d-block{type: 'button', onclick: "location.href='/tags/6'"}
         disgust
+    %li.list-inline-item.tag-search__list.col.pb-3
+      %button#tag-neutral.btn.tag-btn.btn-white.mx-auto.d-block{type: 'button', onclick: "location.href='/tags/7'"}
+        neutral
