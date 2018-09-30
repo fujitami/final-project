@@ -7,7 +7,7 @@ class AlbumsController < ApplicationController
     respond_to do |format|
       format.html
       format.json {
-        if Album.includes(:taggings).where("taggings.tagger_id = ?", current_user.id).references(:taggings).where(spotify_id: params[:id]).exists?
+        if Album.includes(:taggings).where('taggings.tagger_id = ?', current_user.id).references(:taggings).where(spotify_id: params[:id]).exists?
           @btn_disabled = 1
         end
       }
@@ -19,7 +19,7 @@ class AlbumsController < ApplicationController
     render nothing: true
     @album = Album.new(spotify_id: params[:spotify_id])
     user = current_user
-    unless Album.includes(:taggings).where("taggings.tagger_id = ?", current_user.id).references(:taggings).where(spotify_id: params[:spotify_id]).exists?
+    unless Album.includes(:taggings).where('taggings.tagger_id = ?', current_user.id).references(:taggings).where(spotify_id: params[:spotify_id]).exists?
       tag_list = @album.tags_from(user)
       tag_list.add(@tag)
       user.tag(@album, with: tag_list, on: :tags)
