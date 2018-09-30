@@ -5,7 +5,7 @@ class TagsShowService
 
   def get_album_this_tag
     # taggingsに関連するalbumsテーブルから当該タグがついているレコードを取得し、さらにspotify_idカラムの値が同じものを集計→当該タグの付与されたアルバムを抽出
-    album_this_tag = Album.includes(:taggings).where("taggings.tag_id = ?", @this_tag.id).references(:taggings).group(:spotify_id)
+    album_this_tag = Album.includes(:taggings).where('taggings.tag_id = ?', @this_tag.id).references(:taggings).group(:spotify_id)
     album_this_tag_count = album_this_tag.count()
 
     # 上記に含まれるアルバムのうち、ついているタグの中で当該タグが最も多くを占めているものを配列hitsに入れる
@@ -37,7 +37,7 @@ class TagsShowService
     end
 
     # 配列hitsの重複・nil整理、ランダム表示、表示件数指定
-    album_spotify_id = hits.uniq.compact.shuffle.sample(10)
+    album_spotify_id = hits.uniq.compact.shuffle.take(10)
 
   end
 
