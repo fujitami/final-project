@@ -1,0 +1,18 @@
+#current-user-mypage--wrapper
+  -# タイトル(ユーザ名)
+  #current-user-mypage
+    #current-user-mypage--bgmask.row.justify-content-between.d-flex.align-items-center
+      #current-user-mypage__title--wrapper.col-md-auto
+        #current-user-mypage__title
+          %h2
+            = current_user.name
+
+      -# アイコン画像
+      #current-user-mypage__icon--wrapper.col-md
+        %img#current-user-mypage__icon.rounded-circle.img-fluid{ src: current_user.icon }
+
+  -# ユーザがタグ付けしたアルバム一覧
+  .album-index.text-center
+    %h4.album-index__title
+      あなたの印象履歴
+    %ul.album-index__lists.list-inline

@@ -10,11 +10,11 @@
     %ul.nav.navbar-nav.navbar-right.list-inline.w-100.nav-justified.justify-content-end
       - if user_signed_in?
         %li#user-sign-out.list-inline-item
-          = button_to 'サインアウト', destroy_user_session_path, method: :delete, class: 'btn btn-light d-flex align-items-center'
+          = button_to 'サインアウト', destroy_user_session_path, method: :delete, class: 'btn btn-light user-btn d-flex align-items-center'
         %li#user-mypage.list-inline-item
-          = link_to 'マイページ', user_path(current_user), class: 'btn btn-info d-flex align-items-center'
+          = link_to 'マイページ', user_path(current_user), class: 'btn btn-info user-btn d-flex align-items-center'
       - else
         %li#user-sign-in.list-inline-item
-          = link_to 'サインイン', new_user_session_path, class: 'btn btn-light d-flex align-items-center'
+          = link_to 'サインイン', new_user_session_path, class: 'btn btn-light user-btn d-flex align-items-center'
         %li#user-mypage.list-inline-item
-          = link_to '新規登録', new_user_registration_path, class: 'btn btn-primary d-flex align-items-center'
+          = link_to '新規登録', new_user_registration_path, class: 'btn btn-primary user-btn d-flex align-items-center'

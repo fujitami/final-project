@@ -1,0 +1,40 @@
+@import "variable";
+
+#current-user-mypage--wrapper {
+  width: 100%;
+}
+
+#current-user-mypage {
+  min-height: 250px;
+  padding: 50px 0;
+  background-color: #666666;
+}
+
+#current-user-mypage--bgmask {
+  height: 150px;
+  width: 100%;
+  margin: 0;
+  background-color: $whiteOpacity5;
+}
+
+#current-user-mypage__title--wrapper {
+  padding: 20px 10px;
+}
+
+#current-user-mypage__title h2 {
+  margin: 0;
+}
+
+#current-user-mypage__icon--wrapper {
+  max-height: 120px;
+  max-width: 165px;
+  padding-right: 30px;
+}
+
+#current-user-mypage__icon {
+  height: 120px;
+  width: 120px;
+  border: medium double;
+  border-color: #f8f9fa;
+  object-fit: cover;
+}
