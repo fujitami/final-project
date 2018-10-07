@@ -14,30 +14,30 @@
       -# タグ一覧
       %ul#album-search__tags--lists.list-inline.row.justify-content-center.d-flex
         %li.list-inline-item.col-4.pb-3
-          %button#tag-happy.btn.album-search_tag--btn.btn-orange400.d-block.mx-auto{ type: 'button', value: '1' }
+          %button#tag-happy.btn.tag-btn.album-search_tag--btn.btn-orange400.d-block.mx-auto{ type: 'button', value: '1' }
             happy
         %li.list-inline-item.col-4.pb-3
-          %button#tag-anger.btn.album-search_tag--btn.btn-red400.d-block.mx-auto{type: 'button', value: '2' }
+          %button#tag-anger.btn.tag-btn.album-search_tag--btn.btn-red400.d-block.mx-auto{type: 'button', value: '2' }
             anger
         %li.list-inline-item.w-100
         %li.list-inline-item.col-4.pb-3
-          %button#tag-sad.btn.album-search_tag--btn.btn-indigo400.d-block.mx-auto{type: 'button', value: '3' }
+          %button#tag-sad.btn.tag-btn.album-search_tag--btn.btn-indigo400.d-block.mx-auto{type: 'button', value: '3' }
             sad
         %li.list-inline-item.col-4.pb-3
-          %button#tag-surprise.btn.album-search_tag--btn.btn-yellow400.d-block.mx-auto{type: 'button', value: '4' }
+          %button#tag-surprise.btn.tag-btn.album-search_tag--btn.btn-yellow400.d-block.mx-auto{type: 'button', value: '4' }
             surprise
         %li.list-inline-item.w-100
         %li.list-inline-item.col-4.pb-3
-          %button#tag-fear.btn.album-search_tag--btn.btn-purple400.d-block.mx-auto{type: 'button', value: '5' }
+          %button#tag-fear.btn.tag-btn.album-search_tag--btn.btn-purple400.d-block.mx-auto{type: 'button', value: '5' }
             fear
         %li.list-inline-item.col-4.pb-3
-          %button#tag-disgust.btn.album-search_tag--btn.btn-grey400.d-block.mx-auto{type: 'button', value: '6' }
+          %button#tag-disgust.btn.tag-btn.album-search_tag--btn.btn-grey400.d-block.mx-auto{type: 'button', value: '6' }
             disgust
         %li.list-inline-item.w-100
         %li.list-inline-item.col-4.pb-3
-          %button#tag-neutral.btn.album-search_tag--btn.btn-white.d-block.mx-auto{type: 'button', value: '7' }
+          %button#tag-neutral.btn.tag-btn.album-search_tag--btn.btn-white.d-block.mx-auto{type: 'button', value: '7' }
             neutral
 
     -# 試聴プレイヤ
     #album-search__audition
-      %iframe#spotify-player{ width: '320', height: '250', frameborder: '0', allowtransparency: 'true', allow: 'encrypted-media' }
+      %iframe#spotify-player{ width: '320', height: '300', frameborder: '0', allowtransparency: 'true', allow: 'encrypted-media' }
