@@ -89,6 +89,11 @@ $(function () {
       }
     }
 
+    // ページ表示時にアクセストークン取得
+    if (location.host.match(/^localhost:3000$/) || location.host.match(/\d{1,3}.\d{1,3}.\d{1,3}.\d{1,3}$/)) {
+      requireToken();
+    }
+
     // 新規アクセストークン取得
     function requireToken() {
       var requireTokenParams = {
@@ -117,6 +122,8 @@ $(function () {
           tagSearch(accessToken);
         } else if (location.pathname.match(/\/users\/([a-zA-Z0-9]*)$/)) { //マイページにいる時の処理
           mypageShow(accessToken);
+        } else if (location.host.match(/^localhost:3000$/) || location.host.match(/\d{1,3}.\d{1,3}.\d{1,3}.\d{1,3}$/) || location.pathname.match(/\/tags\/$/)) { //トップページにいる時の処理
+          latestAlbumsSearch(accessToken);
         }
       })
       .fail(function(data) {
@@ -126,9 +133,6 @@ $(function () {
 
     // アーティスト検索
     $('#artist-name-search__form').on('keyup', function() {
-      if(location.pathname.match(/\/$/) || location.pathname.match(/\/tags\/$/)) {
-        requireToken();
-      }
       var input = $('#artist-name-search__form').val();
       var authorizationCode = {
         'Accept': 'application/json',
@@ -175,9 +179,37 @@ $(function () {
       });
     }
 
-    // 詳細ページでのアクセストークン取得
-    if (location.pathname.match(/\/artists\/([a-zA-Z0-9]{22})$/) || location.pathname.match(/\/albums\/([a-zA-Z0-9]{22})$/) || location.pathname.match(/\/tags\/([a-zA-Z0-9]*)$/) || location.pathname.match(/\/users\/([a-zA-Z0-9]*)$/)) {
-      requireToken();
+    // 最新の投稿10件を検索
+    function latestAlbumsSearch(accessToken) {
+      var latestSpotifyId = secrets.latest_spotify_id;
+      var latestTagId = secrets.latest_tag_id;
+      for (i=0; i<latestSpotifyId.length; i++) {
+        latestAlbumsIndex(accessToken, latestSpotifyId[i], latestTagId[i]);
+      }
+    }
+
+    // 最新の投稿一覧取得
+    function latestAlbumsIndex(accessToken, latestSpotifyId, latestTagId) {
+      var authorizationCode = {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + accessToken
+      }
+      $.ajax({
+        url: searchAlbumInfoUrl + latestSpotifyId,
+        type: 'GET',
+        headers: authorizationCode,
+        dataType: 'json'
+      })
+      .done(function(data){
+        var latestAlbum = data;
+        var albumThumbUrl = latestAlbum.images[0].url;
+        var albumName = latestAlbum.name;
+        var albumId = latestAlbum.id;
+        appendAlbumIndex(albumThumbUrl, albumName, albumId, latestTagId);
+      })
+      .fail(function(){
+      });
     }
 
     // アーティスト詳細ページへのビュー追加(アーティスト名、アルバム情報)
