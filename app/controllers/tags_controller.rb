@@ -3,13 +3,26 @@ class TagsController < ApplicationController
 
   # 検索用タグボタン一覧(トップページ)
   def index
+    # 秘匿情報の取得
     @client_id_and_secret = Rails.application.secrets.client_id_and_secret
     @refresh_token = Rails.application.secrets.refresh_token
+
+    # 最新の投稿一覧の取得
+    @latest_taggable_id = []
+    Album.group(:spotify_id).order('id desc').first(10).each do |album|
+      latest_album_spotify_id = Album.order('id desc').where('spotify_id = ?', album.spotify_id).maximum(:id)
+      @latest_taggable_id << latest_album_spotify_id
+    end
+
+    @latest_spotify_id = LatestAlbumsService.new(@latest_taggable_id).get_latest_albums_spotify_id_5
+    @latest_tag_id = LatestAlbumsService.new(@latest_taggable_id).get_latest_albums_tag_5
+
     respond_to do |format|
       format.html
       format.json
     end
   end
+
 
   # タグ検索
   def show
