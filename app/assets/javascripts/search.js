@@ -314,7 +314,8 @@ $(function () {
         $.ajax({
           url: '/albums/' + albumId,
           type: 'GET',
-          dataType: 'json'
+          dataType: 'json',
+          cache: false
         })
         .done(function(data){
           if (data.btn_disabled == 1) {
@@ -353,7 +354,8 @@ $(function () {
       $.ajax({
         url: '/tags/' + tagId,
         type: 'GET',
-        dataType: 'json'
+        dataType: 'json',
+        cache: false
       })
       .done(function(data){
         var tagAlbums = data;
