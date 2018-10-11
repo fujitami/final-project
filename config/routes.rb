@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: {
+    registrations: 'users/registrations',
+  }
   root to:'tags#index'
   post 'artists/tagged/:id', to: 'artists#tagged_search'
   resources :artists, only: [:show]
