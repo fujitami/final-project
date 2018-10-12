@@ -400,7 +400,6 @@ $(function () {
         dataType: 'json'
       })
       .done(function(data) {
-        console.log(data);
         var currentUserAlbums = data.album;
         var currentUserMypage = $('#current-user-mypage');
         for (i=0; i<currentUserAlbums.length; i++) {
