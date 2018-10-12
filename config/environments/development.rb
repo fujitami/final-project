@@ -45,6 +45,10 @@ Rails.application.configure do
   # Suppress logger output for asset requests.
   config.assets.quiet = true
 
+  config.paperclip_defaults = {
+    url: '/system/users/:attachment/:id/:style/:filename'
+  }
+
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 

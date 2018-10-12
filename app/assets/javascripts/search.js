@@ -400,10 +400,12 @@ $(function () {
         dataType: 'json'
       })
       .done(function(data) {
-        var currentUserAlbums = data;
+        var currentUserAlbums = data.album;
+        var currentUserMypage = $('#current-user-mypage');
         for (i=0; i<currentUserAlbums.length; i++) {
           currentUserAlbumsIndex(accessToken, currentUserAlbums[i].spotifyAlbumId, currentUserAlbums[i].tagId);
         }
+        currentUserMypage.css('background-color', data.current_user_color);
       })
       .fail(function(){
       });
