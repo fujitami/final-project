@@ -32,8 +32,8 @@
 }
 
 #current-user-mypage__icon {
-  height: 120px;
-  width: 120px;
+  min-height: 120px;
+  min-width: 120px;
   border: medium double;
   border-color: #f8f9fa;
   object-fit: cover;
