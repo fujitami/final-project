@@ -84,7 +84,7 @@ $(function () {
           return 'btn-white';
           break;
         default:
-          return 'btn-green50';
+          return 'btn-outline-dark';
           break;
       }
     }
@@ -397,7 +397,8 @@ $(function () {
       $.ajax({
         url: location.href,
         type: 'GET',
-        dataType: 'json'
+        dataType: 'json',
+        cache: false
       })
       .done(function(data) {
         var currentUserAlbums = data.album;
