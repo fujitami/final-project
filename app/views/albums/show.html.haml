@@ -2,10 +2,10 @@
   #album-search--upper
     -# タイトル(アルバム名・画像)
     #album-search--bgmask.row.justify-content-between.d-flex.align-items-center
-      #artist-name-search__title--wrapper.col-md-4
+      #artist-name-search__title--wrapper.col-4.col-sm-6.col-xl-4
         #album-search__title
         #album-search__title--img
-      #artist-name-search__back--wrapper.col-md-8
+      #artist-name-search__back--wrapper.col-4.col-sm-6.col-xl-8
         = button_to '検索結果に戻る', artist_path, id: 'artist-name-search__back', class: 'btn btn-green400 float-right', onClick: 'history.go(-1); return false;'
 
   #album-search--lower.justify-content-around.d-flex.mx-auto
