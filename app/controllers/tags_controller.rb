@@ -37,7 +37,7 @@ class TagsController < ApplicationController
       @latest_taggable_id << latest_album_spotify_id
     end
 
-    @latest_spotify_id = LatestAlbumsService.new(@latest_taggable_id).get_latest_albums_spotify_id_5
-    @latest_tag_id = LatestAlbumsService.new(@latest_taggable_id).get_latest_albums_tag_5
+    @latest_spotify_id = LatestAlbumsService.new(@latest_taggable_id).get_latest_albums_spotify_id
+    @latest_tag_id = LatestAlbumsService.new(@latest_taggable_id).get_latest_albums_tag
   end
 end
