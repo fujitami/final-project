@@ -1,0 +1,146 @@
+#howto__title.row.justify-content-center.py-3.mark
+  .display-4.text-center.font-weight-bold
+    Dm/F
+  .w-100
+  %h6.font-weight-light.text-center
+    discover music on feelings
+  .w-100
+  #howto__title__caption.col-sm-8.col-sm-offset-4.mx-auto
+    %h5.text-center
+      直感を頼りに、未知の音楽を検索できるサービスです。
+
+%h4.howto__usage.pt-3
+  How to(基本)
+%p.howto__usage--caption
+  まずは、今のあなたの感情に近いアルバムを探すことができる、タグ検索機能から試していきましょう。
+
+%h5.howto__usage--item
+  手順1. アカウントを登録
+%p.howto__usage--caption
+  アカウントを登録すると、各種の検索機能が使用できるようになります。
+
+%h5.howto__usage--item
+  手順2. 今の感情にあったタグを選択
+%p.howto__usage--caption
+  感情に沿って、直感的に選んでみましょう。タグは以下の7種類となります。
+
+#howto__tags.py-3.mark
+  %ul#howto__tags--lists.list-inline.d-flex.mx-auto.mb-0.row
+    %li.list-inline-item.tag-search__list.col
+      = button_to 'happy : 喜び', '', id: 'tag-happy', class: 'btn tag-btn howto__tag--btn btn-orange400 d-block mx-auto', type: 'button', formmethod: 'get'
+    %li.list-inline-item.tag-search__list.col
+      = button_to 'anger : 怒り', '#', id: 'tag-angry', class: 'btn tag-btn howto__tag--btn btn-red400 d-block mx-auto', type: 'button', formmethod: 'get'
+    %li.list-inline-item.tag-search__list.col
+      = button_to 'sad : 悲しみ', '#', id: 'tag-sad', class: 'btn tag-btn howto__tag--btn btn-indigo400 d-block mx-auto', type: 'button', formmethod: 'get'
+    %li.list-inline-item.tag-search__list.col
+      = button_to 'surprise : 驚き', '#', id: 'tag-surprise', class: 'btn tag-btn howto__tag--btn btn-yellow400 d-block mx-auto', type: 'button', formmethod: 'get'
+    %li.list-inline-item.w-100.pb-3
+    %li.list-inline-item.tag-search__list.col
+      = button_to 'fear : 恐れ', '#', id: 'tag-fear', class: 'btn tag-btn howto__tag--btn btn-purple400 d-block mx-auto', type: 'button', formmethod: 'get'
+    %li.list-inline-item.tag-search__list.col
+      = button_to 'disgust : うんざり', '#', id: 'tag-disgust', class: 'btn tag-btn howto__tag--btn btn-grey400 d-block mx-auto', type: 'button', formmethod: 'get'
+    %li.list-inline-item.tag-search__list.col
+      = button_to 'neutral : 中立', '#', id: 'tag-neutral', class: 'btn tag-btn howto__tag--btn btn-white d-block mx-auto', type: 'button', formmethod: 'get'
+
+.w-100.pb-3
+
+%h5.howto__usage--item
+  手順3. 検索結果から、気になるアルバムを選択
+%p.howto__usage--caption
+  ひとつのタグボタンをクリックすると、全ユーザがこれまでにタグ付けしてきたアルバムのうち、
+%p.howto__usage--caption
+  その選択したタグがつけられた割合が多いものが表示されます。
+%p.howto__usage--small-caption.font-weight-light
+  ※表示順はランダムです。
+%p.howto__usage--caption.font-weight-bold
+  つまり、その一覧に並んでいるアルバムはすべて、選択した感情の性質を持っているものになります。
+%p.howto__usage--caption
+  一覧から、気になるアルバムを選択してみましょう。
+
+%h5.howto__usage--item
+  手順4. 試聴して、そのアルバムの印象を選択
+%p.howto__usage--caption
+  アルバム詳細ページには、試聴とタグ付けの2つの機能があります。
+%h6.howto__usage--item
+  試聴
+%p.howto__usage--caption
+  画面右側のプレーヤで、選択したアルバムの試聴ができます。
+%p.howto__usage--small-caption.font-weight-light
+  ※Spotifyのウィジェットを使用しているため、1曲30秒までの試聴となります。
+%h6.howto__usage--item
+  タグ付け
+%p.howto__usage--caption
+  あなたが、そのアルバムはどのような感情を持っていると感じたか、7つのタグから選択することができます。
+%p.howto__usage--small-caption.font-weight-light
+  ※タグの選択は、1作につき1回までです。
+
+%h4.text-center.py-3.text-primary.mark
+  基本的な使い方はここまでです！
+  .w-100
+  = link_to '早速探してみる！', root_path, class: 'btn btn-primary howto__try--btn mt-3 mx-auto'
+
+.w-100.pb-3
+
+%h4.howto-usage.pt-3
+  How to(発展)
+%p.howto__usage--caption
+  タグ検索以外にも、様々な方法で音楽を探すことができます。
+
+%h4.howto__usage--caption.text-info.pt-3
+  気になるアーティストがいるが、作品数が多くて何から聴けばいいのかわからない！
+%p.howto__usage--caption.font-weight-bold
+  アーティスト名検索を使ってみましょう！
+
+%h5.howto__usage--item
+  手順1. トップページのフォームにアーティスト名を入力
+%p.howto__usage--caption
+  アーティスト名を入力すると、検索結果が検索窓の下に表示されます。その検索結果をクリックしてみましょう。
+%h5.howto__usage--item
+  手順2. アーティスト詳細ページでアルバム一覧を確認
+%p.howto__usage--caption
+  遷移先のアーティスト詳細ページには、そのアーティストがリリースしたアルバムが表示されます。
+%p.howto__usage--caption
+  このアルバムボタンには、一番多く付けられたタグの色がついています。
+%p.howto__usage--caption
+  気になる感情の色がついたアルバムを選択し、試聴してみましょう。
+%p.howto__usage--caption
+  また、以下のようにカーソルを載せると黒くなるアルバムボタンは、まだタグ付けがなされていないアルバムです。
+%p.howto__usage--caption
+  見つけたらタグ付けしてみましょう！
+  #howto__usage--example.py-3.mark
+    = link_to image_tag('kakikunsq.png', class: 'album-index__thumbnail--wrapper'), '#', class: 'album-index__btn btn btn-outline-dark d-block mx-auto'
+
+%h4.howto__usage--caption.text-info.pt-3
+  なんでもいいから、すぐにアルバムを試聴したい！
+%p.howto__usage--caption.font-weight-bold
+  トップページの最近タグ付けされたアルバム一覧から、直感で選んでみましょう！
+%p.howto__usage--caption
+  この一覧のアルバムボタンには、最も新しくそのアルバムに付けられたタグの色が反映されています。
+
+%h4.howto__usage--caption.text-info.pt-3
+  自分がどんな性質のアルバムが好きなのか確認したい！
+%p.howto__usage--caption.font-weight-bold
+  マイページを確認してみましょう！
+%p.howto__usage--caption
+  マイページには、あなたがこれまでにタグ付けをしたアルバムの一覧が表示されています。
+%p.howto__usage--caption
+  この一覧のアルバムボタンの色は、あなたの付けたタグの色が反映されています。
+%p.howto__usage--caption
+  また、アカウント名やアイコンが表示されている部分の背景色は、あなたが最も多く付けたタグの色が反映されています。
+
+#howto__close.row.justify-content-center.mark.py-3
+  %h4.col-8.col-offset-4.mx-auto.text-center
+    ここに挙げた以外のやり方でも、
+  %h4.col-8.col-offset-4.mx-auto.text-center
+    あなたの工夫次第で、
+  %h4.col-8.col-offset-4.mx-auto.text-center
+    様々な未知なる音楽と出会えるはずです。
+  .w-100
+  = link_to '早速探してみる！', root_path, class: 'btn btn-primary howto__try--btn col-2 col-offset-10 mx-auto'
+
+.w-100.pb-3
+
+%p.howto__usage--small-caption.font-weight-light.row.justify-content-center
+  このサービスは、
+  = link_to 'Spotify Web API', 'https://developer.spotify.com/documentation/web-api/'
+  を使用して作成されました。
