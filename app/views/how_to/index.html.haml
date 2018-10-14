@@ -78,7 +78,7 @@
 %h4.text-center.py-3.text-primary.mark
   基本的な使い方はここまでです！
   .w-100
-  = link_to '早速探してみる！', root_path, class: 'btn btn-primary howto__try--btn mt-3 mx-auto'
+  = link_to '早速探してみる！', root_path, class: 'btn btn-primary howto__try--btn mt-3 mx-auto', data: {"turbolinks" => false}
 
 .w-100.pb-3
 
@@ -137,7 +137,7 @@
   %h4.col-8.col-offset-4.mx-auto.text-center
     様々な未知なる音楽と出会えるはずです。
   .w-100
-  = link_to '早速探してみる！', root_path, class: 'btn btn-primary howto__try--btn col-2 col-offset-10 mx-auto'
+  = link_to '早速探してみる！', root_path, class: 'btn btn-primary howto__try--btn col-2 col-offset-10 mx-auto', data: {"turbolinks" => false}
 
 .w-100.pb-3
 

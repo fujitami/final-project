@@ -1,7 +1,7 @@
 %nav.navbar.navbar-expand-lg.navbar-light.bg-light.fixed-top.w-100
 
   -# アプリケーション名(クリックでトップページへ)
-  = link_to 'Dm/F', root_path, class: 'navbar-brand'
+  = link_to 'Dm/F', root_path, class: 'navbar-brand', data: {"turbolinks" => false}
 
   -# ユーザ管理関連のボタン群
   %button.navbar-toggler{ data: {toggle: 'collapse', target: '#user-actions'}, aria: {controls: 'user-actions', expanded: 'false', label: 'ナビゲーションの切り替え'}, type: 'button' }
@@ -9,15 +9,15 @@
   #user-actions.collapse.navbar-collapse
     %ul.nav.navbar-nav.list-inline.nav-justified.justify-content-start
       %li.list-inline-item
-        = link_to 'Dm/Fについて', how_to_index_path, class: 'btn btn-light'
+        = link_to 'Dm/Fについて', how_to_index_path, class: 'btn btn-light', data: {"turbolinks" => false}
     %ul.nav.navbar-nav.navbar-right.list-inline.w-100.nav-justified.justify-content-end
       - if user_signed_in?
         %li#user-sign-out.list-inline-item
           = button_to 'サインアウト', destroy_user_session_path, method: :delete, class: 'btn btn-light user-btn d-flex align-items-center'
         %li#user-mypage.list-inline-item
-          = link_to 'マイページ', user_path(current_user), class: 'btn btn-info user-btn d-flex align-items-center'
+          = link_to 'マイページ', user_path(current_user), class: 'btn btn-info user-btn d-flex align-items-center', data: {"turbolinks" => false}
       - else
         %li#user-sign-in.list-inline-item
-          = link_to 'サインイン', new_user_session_path, class: 'btn btn-light user-btn d-flex align-items-center'
+          = link_to 'サインイン', new_user_session_path, class: 'btn btn-light user-btn d-flex align-items-center', data: {"turbolinks" => false}
         %li#user-mypage.list-inline-item
-          = link_to '新規登録', new_user_registration_path, class: 'btn btn-primary user-btn d-flex align-items-center'
+          = link_to '新規登録', new_user_registration_path, class: 'btn btn-primary user-btn d-flex align-items-center', data: {"turbolinks" => false}
