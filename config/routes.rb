@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     registrations: 'users/registrations',
   }
   root to:'tags#index'
+  resources :how_to, only: [:index]
   post 'artists/tagged/:id', to: 'artists#tagged_search'
   resources :artists, only: [:show]
   resources :albums, only: [:create, :show]
