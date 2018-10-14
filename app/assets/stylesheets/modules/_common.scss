@@ -1,14 +1,14 @@
 @import "variable";
 
 body {
-  height: 700px;
+  min-height: 700px;
   min-width: 540px;
   background-image: image-url("symphony.png");
   /* Background pattern from Toptal Subtle Patterns */
 }
 
 .container {
-  margin-top: 70px;
+  margin-top: 59px;
 }
 
 .clearfix {
