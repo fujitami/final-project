@@ -1,5 +1,11 @@
 $(function () {
 
+  window.onpageshow = function(event) {
+    if (event.persisted) {
+      location.reload();
+    }
+  }
+
   // 秘匿情報取得
   $(function getSecrets() {
     $.ajax({
@@ -157,7 +163,7 @@ $(function () {
     // アーティスト検索結果の描画
     function appendArtist(artistname) {
       var html =`<div class="artist-name-search__index list-group">
-                  <a id="artist-name-search__artist-name" class="list-group-item list-group-item-active list-group-item-light" style="max-height: 50px">${ artistname }</a>
+                  <a id="artist-name-search__artist-name" class="list-group-item list-group-item-active list-group-item-light" style="max-height: 50px" data-turbolinks="false">${ artistname }</a>
                 </div>`
       artistSearchIndex.append(html);
     }
