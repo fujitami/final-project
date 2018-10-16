@@ -86,7 +86,7 @@ $(function () {
     }
 
     // ページ表示時にアクセストークン取得
-    if (location.host.match(/^localhost:3000$/) || location.host.match(/\d{1,3}.\d{1,3}.\d{1,3}.\d{1,3}$/)) {
+    if (location.host.match(/^localhost:3000$/) || location.host.match(/^www.discovermusiconfeelings.com$/)) {
       requireToken();
     }
 
@@ -118,7 +118,7 @@ $(function () {
           tagSearch(accessToken);
         } else if (location.pathname.match(/\/users\/([a-zA-Z0-9]*)$/)) { //マイページにいる時の処理
           mypageShow(accessToken);
-        } else if (location.host.match(/^localhost:3000$/) || location.host.match(/\d{1,3}.\d{1,3}.\d{1,3}.\d{1,3}$/) || location.pathname.match(/\/tags\/$/)) { //トップページにいる時の処理
+        } else if (location.host.match(/^localhost:3000$/) || location.host.match(/^www.discovermusiconfeelings.com$/) || location.pathname.match(/\/tags\/$/)) { //トップページにいる時の処理
           latestAlbumsSearch(accessToken);
         }
       })
