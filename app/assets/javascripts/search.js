@@ -86,7 +86,7 @@ $(function () {
     }
 
     // ページ表示時にアクセストークン取得
-    if (location.host.match(/^localhost:3000$/) || location.host.match(/^www.discovermusiconfeelings.com$/)) {
+    if (location.host.match(/^localhost:3000$/) || location.hostname.match(/^www.discovermusiconfeelings.com$/)) {
       requireToken();
     }
 
