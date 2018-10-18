@@ -28,8 +28,7 @@ $(function () {
     var base64IdAndSecret = window.btoa(clientIdAndSecretVar);
     var accessToken = '';
     var refreshTokenVar = secrets.refreshToken;
-    // const proxyurl = 'https://cors-anywhere.herokuapp.com/';
-    const proxyurl = 'http://178.128.48.112:60088/';
+    const proxyurl = 'https://cors-anywhere.herokuapp.com/';
     const requireTokenUrl = 'https://accounts.spotify.com/api/token';
 
     // 検索機能のための変数定義
