@@ -16,13 +16,23 @@ class AlbumsController < ApplicationController
 
   # albumsテーブルにアルバム情報のレコード追加(タグ・ユーザとの関連付けも含む)
   def create
-    render nothing: true
     @album = Album.new(spotify_id: params[:spotify_id])
     user = current_user
-    unless Album.includes(:taggings).where('taggings.tagger_id = ?', current_user.id).references(:taggings).where(spotify_id: params[:spotify_id]).exists?
-      tag_list = @album.tags_from(user)
-      tag_list.add(@tag)
-      user.tag(@album, with: tag_list, on: :tags)
+    #current_userのbanカラムに値が入っているとき→タグ付けを保存しない
+    if User.where('id = ?', user.id).where(ban: 'ban').exists?
+      redirect_to root_path, alert: ''
+    else
+      unless Album.includes(:taggings).where('taggings.tagger_id = ?', user.id).references(:taggings).where(spotify_id: params[:spotify_id]).exists?
+        tag_list = @album.tags_from(user)
+        tag_list.add(@tag)
+        user.tag(@album, with: tag_list, on: :tags)
+      end
+      # ログイン中ユーザによって1分間に10回投稿がされた場合、そのユーザを凍結する
+      @spam_judge = Album.includes(:taggings).where('taggings.tagger_id = ?', user.id).references(:taggings).where(created_at: Time.current.to_datetime.beginning_of_minute..Time.current.to_datetime.end_of_minute).count()
+      if @spam_judge > 10
+        user.ban = 'ban'
+        user.save
+      end
     end
   end
 
@@ -32,7 +42,7 @@ class AlbumsController < ApplicationController
     params.require(:album).permit(
       :id,
       :spotify_id,
-      users_attributes: [:id]
+      users_attributes: [:id, :ban]
     )
   end
 
