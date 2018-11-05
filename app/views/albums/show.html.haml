@@ -16,29 +16,22 @@
       -# タグ一覧
       %ul#album-search__tags--lists.list-inline.row.justify-content-center.d-flex
         %li.list-inline-item.col-4.pb-3
-          %button#tag-happy.btn.tag-btn.album-search_tag--btn.btn-orange400.d-block.mx-auto{ type: 'button', value: '1' }
-            happy
+          = button_tag 'happy', id: 'tag-happy', class: 'btn tag-btn album-search__tag--btn btn-orange400 d-block mx-auto', type: 'button', value: '1'
         %li.list-inline-item.col-4.pb-3
-          %button#tag-anger.btn.tag-btn.album-search_tag--btn.btn-red400.d-block.mx-auto{type: 'button', value: '2' }
-            anger
+          = button_tag 'anger', id: 'tag-anger', class: 'btn tag-btn album-search__tag--btn btn-red400 d-block mx-auto', type: 'button', value: '2'
         %li.list-inline-item.w-100
         %li.list-inline-item.col-4.pb-3
-          %button#tag-sad.btn.tag-btn.album-search_tag--btn.btn-indigo400.d-block.mx-auto{type: 'button', value: '3' }
-            sad
+          = button_tag 'sad', id: 'tag-sad', class: 'btn tag-btn album-search__tag--btn btn-indigo400 d-block mx-auto', type: 'button', value: '3'
         %li.list-inline-item.col-4.pb-3
-          %button#tag-surprise.btn.tag-btn.album-search_tag--btn.btn-yellow400.d-block.mx-auto{type: 'button', value: '4' }
-            surprise
+          = button_tag 'surprise', id: 'tag-surprise', class: 'btn tag-btn album-search__tag--btn btn-yellow400 d-block mx-auto', type: 'button', value: '4'
         %li.list-inline-item.w-100
         %li.list-inline-item.col-4.pb-3
-          %button#tag-fear.btn.tag-btn.album-search_tag--btn.btn-purple400.d-block.mx-auto{type: 'button', value: '5' }
-            fear
+          = button_tag 'fear', id: 'tag-fear', class: 'btn tag-btn album-search__tag--btn btn-purple400 d-block mx-auto', type: 'button', value: '5'
         %li.list-inline-item.col-4.pb-3
-          %button#tag-disgust.btn.tag-btn.album-search_tag--btn.btn-grey400.d-block.mx-auto{type: 'button', value: '6' }
-            disgust
+          = button_tag 'disgust', id: 'tag-disgust', class: 'btn tag-btn album-search__tag--btn btn-grey400 d-block mx-auto', type: 'button', value: '6'
         %li.list-inline-item.w-100
         %li.list-inline-item.col-4.pb-3
-          %button#tag-neutral.btn.tag-btn.album-search_tag--btn.btn-white.d-block.mx-auto{type: 'button', value: '7' }
-            neutral
+          = button_tag 'neutral', id: 'tag-neutral', class: 'btn tag-btn album-search__tag--btn btn-white d-block mx-auto', type: 'button', value: '7'
 
     -# 試聴プレイヤ
     #album-search__audition
