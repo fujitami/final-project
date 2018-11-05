@@ -4,8 +4,7 @@
   = link_to 'Dm/F', root_path, class: 'navbar-brand', data: {"turbolinks" => false}
 
   -# ユーザ管理関連のボタン群
-  %button.navbar-toggler{ data: {toggle: 'collapse', target: '#user-actions'}, aria: {controls: 'user-actions', expanded: 'false', label: 'ナビゲーションの切り替え'}, type: 'button' }
-    %span.navbar-toggler-icon
+  = button_tag sanitize('<span class="navbar-toggler-icon"></span>'), class: 'navbar-toggler', type: 'button', data: {toggle: 'collapse', target: '#user-actions'}, aria: {controls: 'user-actions', expanded: 'false', label: 'ナビゲーションの切り替え'}
   #user-actions.collapse.navbar-collapse
     %ul.nav.navbar-nav.list-inline.nav-justified.justify-content-start
       %li.list-inline-item

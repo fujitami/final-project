@@ -15,27 +15,20 @@
     アルバムの印象で検索
   %ul#tag-search__lists.list-inline.row.d-flex.justify-content-around.mx-auto
     %li.list-inline-item.tag-search__list.col.pb-3
-      %button#tag-happy.btn.tag-btn.btn-orange400.mx-auto.d-block{type: 'button', onclick: "location.href='/tags/1'"}
-        happy
+      = button_tag 'happy', id: 'tag-happy', class: 'btn tag-btn tag-search__list--btn btn-orange400 d-block mx-auto', type: 'button', value: '1', onclick: "location.href='/tags/1'"
     %li.list-inline-item.tag-search__list.col.pb-3
-      %button#tag-anger.btn.tag-btn.btn-red400.mx-auto.d-block{type: 'button', onclick: "location.href='/tags/2'"}
-        anger
+      = button_tag 'anger', id: 'tag-anger', class: 'btn tag-btn tag-search__list--btn btn-red400 d-block mx-auto', type: 'button', value: '2', onclick: "location.href='/tags/2'"
     %li.list-inline-item.tag-search__list.col.pb-3
-      %button#tag-sad.btn.tag-btn.btn-indigo400.mx-auto.d-block{type: 'button', onclick: "location.href='/tags/3'"}
-        sad
+      = button_tag 'sad', id: 'tag-sad', class: 'btn tag-btn tag-search__list--btn btn-indigo400 d-block mx-auto', type: 'button', value: '3', onclick: "location.href='/tags/3'"
     %li.list-inline-item.tag-search__list.col.pb-3
-      %button#tag-surprise.btn.tag-btn.btn-yellow400.mx-auto.d-block{type: 'button', onclick: "location.href='/tags/4'"}
-        surprise
+      = button_tag 'surprise', id: 'tag-surprise', class: 'btn tag-btn tag-search__list--btn btn-yellow400 d-block mx-auto', type: 'button', value: '4', onclick: "location.href='/tags/4'"
     %li.w-100.d-block.d-lg-none
     %li.list-inline-item.tag-search__list.col.pb-3
-      %button#tag-fear.btn.tag-btn.btn-purple400.mx-auto.d-block{type: 'button', onclick: "location.href='/tags/5'"}
-        fear
+      = button_tag 'fear', id: 'tag-fear', class: 'btn tag-btn tag-search__list--btn btn-purple400 d-block mx-auto', type: 'button', value: '5', onclick: "location.href='/tags/5'"
     %li.list-inline-item.tag-search__list.col.pb-3
-      %button#tag-disgust.btn.tag-btn.btn-grey400.mx-auto.d-block{type: 'button', onclick: "location.href='/tags/6'"}
-        disgust
+      = button_tag 'disgust', id: 'tag-disgust', class: 'btn tag-btn tag-search__list--btn btn-grey400 d-block mx-auto', type: 'button', value: '6', onclick: "location.href='/tags/6'"
     %li.list-inline-item.tag-search__list.col.pb-3
-      %button#tag-neutral.btn.tag-btn.btn-white.mx-auto.d-block{type: 'button', onclick: "location.href='/tags/7'"}
-        neutral
+      = button_tag 'neutral', id: 'tag-neutral', class: 'btn tag-btn tag-search__list--btn btn-white d-block mx-auto', type: 'button', value: '7', onclick: "location.href='/tags/7'"
 
 -# タグ付けされたアルバム最新10件の表示
 #latest-post
@@ -43,4 +36,3 @@
     %h4.album-index__title
       最近タグ付けされたアルバム
     %ul.album-index__lists.list-inline
-
