@@ -241,10 +241,14 @@ $(function () {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer ' + accessToken
       }
+      var artistAlbumSearchParams = {
+        limit: 50
+      }
       $.ajax({
         url: searchArtistInfoUrl + spotifyArtistId + '/albums',
         type: 'GET',
         headers: authorizationCode,
+        data: artistAlbumSearchParams,
         dataType: 'json'
       })
       .done(function(data){
