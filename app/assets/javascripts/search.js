@@ -315,7 +315,7 @@ $(function () {
         })
         .done(function(data){
           if (data.btn_disabled == 1) {
-            $('.album-search_tag--btn').addClass('disabled');
+            $('.album-search__tag--btn').addClass('disabled');
           }
         })
         .fail(function(){
@@ -325,9 +325,9 @@ $(function () {
 
     // アルバムへのタグ付与(albums#create)
     function taggingAlbum(spotifyAlbumId) {
-      $('.album-search_tag--btn').click(function() {
+      $('.album-search__tag--btn').click(function() {
         var buttonVal = $(this).val();
-        $('.album-search_tag--btn').prop('disabled', true);
+        $('.album-search__tag--btn').prop('disabled', true);
         $.ajax({
           url: '/albums',
           type: 'POST',
