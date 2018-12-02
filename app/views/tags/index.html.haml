@@ -1,3 +1,10 @@
+- if flash[:alert]
+  #freeze-alert.alert.alert-danger.alert-dismissible.fade.show
+    %strong
+      投稿が制限されています。
+    %button.close.close-button{type: 'button', data: {dismiss: 'alert', turbolinks: false}, onClick: 'window.location.reload();'}
+      %span.close-button__chara{aria: {hidden: true}}×
+
 #application-name.row.justify-content-center.pt-3
   = image_tag 'Logos made simple2000.png', alt: 'Logo', id: 'application-name__img'
 
