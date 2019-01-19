@@ -1,8 +1,8 @@
 @import "variable";
 
 body {
-  min-height: 700px;
-  min-width: 540px;
+  min-height: 100vh;
+  min-width: 100vw;
   background-image: image-url("symphony.png");
   /* Background pattern from Toptal Subtle Patterns */
 }
