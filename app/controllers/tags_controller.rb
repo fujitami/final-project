@@ -1,5 +1,4 @@
 class TagsController < ApplicationController
-  before_action :authenticate_user!, only: [:show]
 
   # 検索用タグボタン一覧(トップページ)
   def index
